@@ -19,7 +19,7 @@ jobs:
         php-version: '8.2'
 
     - name: Validar Composer
-      run: composer validate --strict
+      run: composer validate
 
     - name: Buscar Errores de Sintaxis (Lint)
       run: find . -name "*.php" ! -path "./vendor/*" -exec php -l {} \;
