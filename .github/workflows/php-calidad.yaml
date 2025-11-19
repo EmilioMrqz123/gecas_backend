@@ -1,0 +1,22 @@
+name: Verificación de Calidad PHP
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  revisar-codigo:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Instalar PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+
+    - name: Validar Composer
+      run: composer validate --strict
+
+    - name: Buscar Errores de Sintaxis (Lint)
+      run: find . -name "*.php" ! -path "./vendor/*" -exec php -l {} \;
