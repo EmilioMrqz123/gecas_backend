@@ -1,11 +1,14 @@
 name: Verificación de Calidad PHP
 
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
   revisar-codigo:
+    name: Verificador de Sintaxis
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
